@@ -38,35 +38,71 @@ class Homepage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: createText(),
-          )
+          ),
+          const TextBox()
         ]);
+  }
+
+// Exercise 1 - Create a button
+  Widget createButton() {
+    return FloatingActionButton(
+      onPressed: () {
+        print("The button was pressed!");
+      },
+      tooltip: 'Increment',
+      child: const Icon(Icons.add),
+    );
+  }
+
+// Exercise 1 - Create a text label
+  Widget createText() {
+    return const Text(
+      "This is my text",
+
+      //Some more code to make things nicer.
+      textAlign: TextAlign.center,
+      style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
+    );
   }
 }
 
-// Exercise 1 - Create a button
-Widget createButton() {
-  return FloatingActionButton(
-    onPressed: () {
-      print("The button was pressed!");
-    },
-    tooltip: 'Increment',
-    child: const Icon(Icons.add),
-  );
+// Define a custom textbox widget.
+class TextBox extends StatefulWidget {
+  const TextBox({super.key});
+
+  @override
+  State<TextBox> createState() => _TextBoxState();
 }
 
-// Exercise 1 - Create a text label
-Widget createText() {
-  return const Text(
-    "This is my text",
+// Define a corresponding State class.
+// This class holds the data related to the textbox.
+class _TextBoxState extends State<TextBox> {
+  // Create a text controller and use it to retrieve the current value
+  // of the TextField.
+  final textInputController = TextEditingController();
 
-    //Some more code to make things nicer.
-    textAlign: TextAlign.center,
-    style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
-  );
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    textInputController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(top: 20.0, bottom: 20.0, left:50.0, right:50.0),
+          child: TextField(controller: textInputController),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: ElevatedButton(
+              onPressed: () => print(textInputController.text),
+              child: const Text("Print Data")),
+        )
+      ],
+    );
+  }
 }
-
-// Widget create_textbox() {
-//   return ...
-// }
-
-

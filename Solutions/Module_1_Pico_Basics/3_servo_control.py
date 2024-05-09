@@ -9,7 +9,7 @@ def angle_to_duty(target_angle):
 
 # Here we use the output of the easing function to drive the servo. 
 # Some additional transofrmations are needed for it to be useable for a servo input.
-def easeToPosition (servo: PWM, current, target, speed=3):    
+def easeToPosition (servo: PWM, current, target, speed=4):    
     print(f"Current {current}, Target {target}")
     if current < target:
         diff = target - current
