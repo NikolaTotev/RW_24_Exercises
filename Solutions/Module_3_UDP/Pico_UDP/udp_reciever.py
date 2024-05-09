@@ -34,5 +34,6 @@ def udp_server(ssid, password):
     while True:
         data, addr = udp_socket.recvfrom(16)            
         print(f"Received: {data}")
+        
 udp_server(ssid, password)
 
