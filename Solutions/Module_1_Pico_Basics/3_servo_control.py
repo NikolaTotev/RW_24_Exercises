@@ -29,7 +29,7 @@ def easeInOutQuadratic(x: float):
 
 
 # Define which pin number controls the LED
-servo_pin: int = 16
+servo_pin: int = 15
 
 servo = PWM(Pin(servo_pin))
 
