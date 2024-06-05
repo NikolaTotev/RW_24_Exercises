@@ -9,7 +9,7 @@ import time
 
 # Define which pin number controls the LED
 fading_led_number: int = 16
-blinking_led_number: int = 17
+blinking_led_number: int = 18
 
 def fade_led():
     pwm_controller = machine.PWM(machine.Pin(fading_led_number))
